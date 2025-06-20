@@ -1,7 +1,16 @@
-# .gitignore
+# Ignoriere sensible Dateien oder Ordner global
 .env
 .htaccess
-deploy.sh
-/vendor/
 *.log
 *.bak
+
+# Composer/Vendor
+status/vendor/
+main/vendor
+
+# Lokale Entwicklungsdateien
+*.sh
+
+# Private Konfig oder Uploads
+main/private/
+status/private/
