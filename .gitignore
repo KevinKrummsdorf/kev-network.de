@@ -1,5 +1,7 @@
 # .gitignore
 .env
+.htaccess
+deploy.sh
 /vendor/
 *.log
 *.bak
