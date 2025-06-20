@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Kev-Network{% endblock %}</title>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="{% if dark_mode %}bg-dark text-light{% else %}bg-light text-dark{% endif %}">
+
+<header class="site-header">
+    <img src="/assets/logo.png" alt="Kev-Network Logo" class="site-logo">
+</header>
+
+
+
+<main class="container py-5">
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    &copy; {{ "now"|date("Y") }} <strong>kev-network.de</strong> — powered by ❤️ & Twig<br>
+    Developed by Kevin Krummsdorf
+</footer>
+
+
+
+<script src="/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>

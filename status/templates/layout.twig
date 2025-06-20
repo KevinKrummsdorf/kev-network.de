@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Status | Kev-Network{% endblock %}</title>
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/uptime.js" defer></script>
+</head>
+<body class="dark-mode">
+
+    <header>
+        <div class="logo-header">
+            <img src="/assets/logo.png" alt="Logo" class="logo-big">
+        </div>
+    </header>
+
+    <div class="layout-wrapper">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="/">🏠 Übersicht</a></li>
+                <li><a href="/dyndns">🔁 DynDNS</a></li>
+                <li><a href="/jellyfin">📺 Jellyfin</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+<footer>
+    &copy; {{ "now"|date("Y") }} <strong>kev-network.de</strong> — powered by ❤️ & Twig<br>
+    Developed by Kevin Krummsdorf
+</footer>
+
+</body>
+</html>

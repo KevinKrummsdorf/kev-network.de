@@ -1,0 +1,14 @@
+{% extends "layout.twig" %}
+
+{% block title %}Startseite | Kev-Network{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-5 display-5">Willkommen bei Kev-Network</h2>
+<div class="row g-4">
+    <div class="col-sm-6 col-lg-4"><a href="{{ jellyfin }}" class="btn btn-outline-primary w-100 py-4 fs-5">🎬 Jellyfin</a></div>
+    <div class="col-sm-6 col-lg-4"><a href="{{ status }}" class="btn btn-outline-success w-100 py-4 fs-5">📊 Status</a></div>
+    <div class="col-sm-6 col-lg-4"><a href="{{ webmail }}" class="btn btn-outline-secondary w-100 py-4 fs-5">📬 Webmail</a></div>
+    <div class="col-sm-6 col-lg-4"><a href="{{ panel }}" class="btn btn-outline-light w-100 py-4 fs-5">🛠 Verwaltung</a></div>
+    <div class="col-sm-6 col-lg-4"><a class="btn btn-outline-warning w-100 py-4 fs-5 disabled">☁️ Cloud (bald)</a></div>
+</div>
+{% endblock %}

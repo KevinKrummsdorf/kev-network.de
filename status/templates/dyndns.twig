@@ -1,0 +1,77 @@
+{% extends "layout.twig" %}
+
+{% block title %}DynDNS Status{% endblock %}
+
+{% block content %}
+    <h2>DynDNS Status</h2>
+
+    {% if latest %}
+        <div class="status {{ latestClass }}">
+            <p><strong>Status:</strong> {{ latestStatus }}</p>
+            <p><strong>Letztes Update:</strong> {{ latest.date }}</p>
+            <p><strong>IPv4:</strong> {{ latest.ipv4 }}</p>
+            <p><strong>IPv6:</strong> {{ latest.ipv6 }}</p>
+            <p><strong>Antwort:</strong> {{ latest.response }}</p>
+        </div>
+    {% else %}
+        <div class="status error">
+            <p>❌ Kein erfolgreicher dynv6-Eintrag gefunden.</p>
+        </div>
+    {% endif %}
+
+    <h3>Verlauf</h3>
+    <table>
+        <thead>
+            <tr><th>Datum</th><th>IPv4</th><th>IPv6</th><th>Antwort</th></tr>
+        </thead>
+        <tbody>
+            {% for entry in updates %}
+                <tr>
+                    <td>{{ entry.date }}</td>
+                    <td>{{ entry.ipv4 }}</td>
+                    <td>{{ entry.ipv6 }}</td>
+                    <td>{{ entry.response }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Uptime Graph</h3>
+    <canvas id="uptimeChart" width="600" height="250"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('uptimeChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ chartLabels|json_encode|raw }},
+            datasets: [{
+                label: 'Erfolgreiche dynv6 Updates',
+                data: {{ chartValues|json_encode|raw }},
+                backgroundColor: '#3ca3a3',
+                borderRadius: 4,
+                barThickness: 30,
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { precision: 0 }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ccc'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+    <script src="/js/uptime.js"></script>
+{% endblock %}
