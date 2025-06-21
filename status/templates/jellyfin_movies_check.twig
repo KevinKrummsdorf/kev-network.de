@@ -1,0 +1,29 @@
+{% extends "layout.twig" %}
+
+{% block title %}Jellyfin | Defekte Filme{% endblock %}
+
+{% block content %}
+<h2>Jellyfin – Diagnose defekter Filme</h2>
+
+<p>Untersuchte Filme: {{ movieCount }}<br>
+Gefundene Problem-Filme: <strong>{{ issueCount }}</strong></p>
+
+{% if issues is not empty %}
+<table>
+    <thead>
+        <tr><th>Titel</th><th>Erscheinungsjahr</th><th>Problem</th></tr>
+    </thead>
+    <tbody>
+        {% for i in issues %}
+        <tr>
+            <td>{{ i.title }}</td>
+            <td>{{ i.year }}</td>
+            <td>{{ i.reason }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p class="status success">Keine defekten Filme gefunden – alles spielbar.</p>
+{% endif %}
+{% endblock %}

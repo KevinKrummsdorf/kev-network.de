@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Routes\Dyndns;
+use App\Routes\Jellyfin;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../private');
@@ -22,8 +23,22 @@ switch (true) {
         (new Dyndns())->handle();
         break;
 
+    case str_starts_with($path, '/jellyfin-movies'):
+        (new \App\Routes\JellyfinMovieCheck())->handle();
+        break;
+
+    case str_starts_with($path, '/jellyfin-series'):
+        (new \App\Routes\JellyfinSeriesCheck())->handle();
+        break;
+
+
+    case str_starts_with($path, '/jellyfin'):
+        (new Jellyfin())->handle();
+        break;
+
     default:
         http_response_code(404);
         echo "<h1>404 - Seite nicht gefunden</h1>";
         break;
 }
+

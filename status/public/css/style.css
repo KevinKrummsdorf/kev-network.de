@@ -170,3 +170,16 @@ footer {
     display: flex;
     flex: 1 0 auto;
 }
+
+.material-symbols-outlined {
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 1.25em;
+    color: #e3e3e3;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+}
+

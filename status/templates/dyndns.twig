@@ -15,7 +15,7 @@
         </div>
     {% else %}
         <div class="status error">
-            <p>❌ Kein erfolgreicher dynv6-Eintrag gefunden.</p>
+            <p>Kein erfolgreicher dynv6-Eintrag gefunden.</p>
         </div>
     {% endif %}
 
@@ -35,43 +35,4 @@
             {% endfor %}
         </tbody>
     </table>
-
-    <h3>Uptime Graph</h3>
-    <canvas id="uptimeChart" width="600" height="250"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('uptimeChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: {{ chartLabels|json_encode|raw }},
-            datasets: [{
-                label: 'Erfolgreiche dynv6 Updates',
-                data: {{ chartValues|json_encode|raw }},
-                backgroundColor: '#3ca3a3',
-                borderRadius: 4,
-                barThickness: 30,
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: { precision: 0 }
-                }
-            },
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#ccc'
-                    }
-                }
-            }
-        }
-    });
-</script>
-
-    <script src="/js/uptime.js"></script>
 {% endblock %}

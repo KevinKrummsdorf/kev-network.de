@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block title %}Jellyfin Status{% endblock %}
+
+{% block content %}
+<h2>Jellyfin Status</h2>
+
+<div class="status {{ statusClass }}">
+    <p><strong>Status:</strong> {{ statusText }}</p>
+</div>
+
+<h3 class="mt-4">Systeminformationen</h3>
+<ul>
+    <li><strong>Jellyfin Version:</strong> {{ systemInfo.version ?: 'Nicht verfügbar' }}</li>
+    <li><strong>Gerätename:</strong> {{ systemInfo.deviceName ?: 'Nicht verfügbar' }}</li>
+    <li>
+        <strong>Systemstatus:</strong>
+            {% if systemInfo.hasUpdateAvailable == false %}
+                System ist aktuell
+            {% else %}
+                Update verfügbar
+            {% endif %}
+    </li>
+</ul>
+
+<h3 class="mt-4">Medienstatistik</h3>
+<ul>
+    {% for label, value in mediaStats %}
+        <li><strong>{{ label }}:</strong> {{ value }}</li>
+    {% else %}
+        <li>Keine Daten verfügbar.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

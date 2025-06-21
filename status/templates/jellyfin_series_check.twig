@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block title %}Jellyfin | Serienprüfung{% endblock %}
+
+{% block content %}
+<h2>Jellyfin – Diagnose defekter Episoden</h2>
+
+<p>
+    Untersuchte Serien: {{ seriesCount }}<br>
+    Gefundene Problem-Episoden: <strong>{{ issueCount }}</strong>
+</p>
+
+{% if issues %}
+<table>
+    <thead>
+        <tr>
+            <th>Serie</th><th>Staffel</th><th>Episode</th><th>Titel</th><th>Problem</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in issues %}
+        <tr>
+            <td>{{ i.series }}</td>
+            <td>S{{ i.season }}</td>
+            <td>E{{ i.episode }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.reason }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p class="status success">Keine defekten Episoden gefunden – alle Folgen sind spielbar.</p>
+{% endif %}
+{% endblock %}

@@ -2,25 +2,34 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Status | Kev-Network{% endblock %}</title>
+    <title>{% block title %}Status | Kev‑Network{% endblock %}</title>
     <link rel="icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/uptime.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body class="dark-mode">
 
-    <header>
-        <div class="logo-header">
-            <img src="/assets/logo.png" alt="Logo" class="logo-big">
-        </div>
-    </header>
+<header>
+    <div class="logo-header">
+        <a href="https://kev-network.de" title="Zur Hauptseite">
+            <img src="/assets/logo.png" alt="Kev-Network Logo" class="logo-big">
+        </a>
+    </div>
+</header>
 
     <div class="layout-wrapper">
         <aside class="sidebar">
             <ul>
-                <li><a href="/">🏠 Übersicht</a></li>
-                <li><a href="/dyndns">🔁 DynDNS</a></li>
-                <li><a href="/jellyfin">📺 Jellyfin</a></li>
+                <li><a href="/"><span class="material-symbols-outlined">home</span>Über­sicht</a></li>
+                <li><a href="/dyndns"><span class="material-symbols-outlined">autorenew</span>DynDNS</a></li>
+                <li>
+                    <span class="material-symbols-outlined">monitor_heart</span>Jellyfin
+                    <ul>
+                        <li><a href="/jellyfin"><span class="material-symbols-outlined">dashboard</span>Systemstatus</a></li>
+                        <li><a href="/jellyfin-series"><span class="material-symbols-outlined">tv</span>Serienprüfung</a></li>
+                        <li><a href="/jellyfin-movies"><span class="material-symbols-outlined">movie</span>Filmprüfung</a></li>
+                    </ul>
+                </li>
             </ul>
         </aside>
 
@@ -29,10 +38,10 @@
         </main>
     </div>
 
-<footer>
-    &copy; {{ "now"|date("Y") }} <strong>kev-network.de</strong> — powered by ❤️ & Twig<br>
-    Developed by Kevin Krummsdorf
-</footer>
+    <footer>
+        &copy; {{ "now"|date("Y") }} <strong>kev‑network.de</strong> — powered by ❤️ & Twig<br>
+        Developed by Kevin Krummsdorf
+    </footer>
 
 </body>
 </html>
